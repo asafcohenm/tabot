@@ -11,6 +11,10 @@
     $botServer->addBot($echoBot);
     
     //Handle request
-    $botServer->processRequest();
+   // $botServer->processRequest();
+
+    $result = $echoBot->processMessage(new message("Hello",new user("12345644444")));
+    print_r($result);
+
     
 ?>
