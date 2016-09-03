@@ -13,7 +13,8 @@
     //Handle request
    // $botServer->processRequest();
 
-    $result = $echoBot->processMessage(new message("Hello",new user("12345644444")));
+    $result = $echoBot->processMessage(new message("asaf",new user("12345644444")));
+echo "<pre>";
     print_r($result);
 
     

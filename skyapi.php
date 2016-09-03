@@ -46,7 +46,7 @@ $params = http_build_query(array
     "originPlace" => 'TLV-sky',
     "destinationPlace" => 'AMS-sky',
     "outbounddate" => '2016-12-25',
-    "inbounddate" => '2016-12-30',
+    //"inbounddate" => '2016-12-30',
     "cabinclass" => 'Economy',
     "adults" => 1
 ));
@@ -125,7 +125,7 @@ else
 
         // echo results
         //echo "The server responded: <br />";
-        echo $info['http_code'] . " " . $http_codes[$info['http_code']];
+       // echo $info['http_code'] . " " . $http_codes[$info['http_code']];
     }
 
 }
@@ -160,10 +160,34 @@ else
     $st=explode('GMT',$result);
     $myarray=json_decode($st[1],true);
 
-    //echo '<PRE>';
+
+
+   // header('Content-Type: application/json');
+echo "<pre>";
+    $sizearr = count($myarray['Itineraries']);
+    echo $sizearr;
+    echo "\n";
+   for ($i=0; $i < $sizearr; $i++){
+
+    $legId = $myarray['Itineraries'][$i]['OutboundLegId'];
+       echo $legId;
+
+    foreach ($myarray['Legs'] as $k => $v) {
+            if($v['Id'] == $legId) {
+                echo "              ".$k."   ";
+              echo count($v['Stops']);
+                echo "\n";
+
+            }
+            //echo $v["Id"];
+
+    }}
+
     echo "<pre>";
-    print_r($myarray);
+    //print_r($myarray);
     echo "</pre>";
+
+//    echo json_encode($myarray);
 
     // foreach($myarray as $k => $v)
     // {
